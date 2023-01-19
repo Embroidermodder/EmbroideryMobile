@@ -1,13 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '26.0.2'
+    compileSdkVersion 31
 
     defaultConfig {
         applicationId "com.embroidermodder.embroideryviewer"
         minSdkVersion 16
-        targetSdkVersion 25
+        targetSdkVersion 31
         versionCode 4000
         versionName "1.0"
     }
@@ -21,10 +20,10 @@ android {
 
 dependencies {
     implementation 'com.android.support:support-v4:25.4.0'
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:25.4.0'
-    compile 'com.android.support:design:25.4.0'
-    compile 'com.github.yukuku:ambilwarna:2.0.1'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.android.support:appcompat-v7:25.4.0'
+    implementation 'com.android.support:design:25.4.0'
+    implementation 'com.github.yukuku:ambilwarna:2.0.1'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
 }
