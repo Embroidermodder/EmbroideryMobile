@@ -1,3 +1,9 @@
 [submodule "jni/libembroidery"]
 	path = jni/libembroidery
 	url = https://github.com/Embroidermodder/libembroidery
+[submodule "libembroidery_swift"]
+	path = libembroidery_swift
+	url = https://github.com/embroidermodder/libembroidery_swift
+[submodule "libembroidery_java"]
+	path = libembroidery_java
+	url = https://github.com/embroidermodder/libembroidery_java
