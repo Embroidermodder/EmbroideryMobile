@@ -153,29 +153,26 @@ public class MainActivity extends AppCompatActivity implements EmbPattern.Provid
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        switch (id) {
-            case R.id.action_open_file:
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                Uri uri = Uri.parse(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString());
-                intent.setDataAndType(uri, "*/*");
-                startActivityForResult(Intent.createChooser(intent, "Open folder"), SELECT_FILE);
-                return true;
-            case R.id.action_show_statistics:
-                showStatistics();
-                return true;
-            case R.id.action_share:
-                useShareFragment();
-                break;
-            case R.id.action_load_file:
-                dialogDismiss();
-                makeDialog(R.layout.embroidery_thumbnail_view);
-                saveFileWrapper(new PermissionRequired() {
-                    @Override
-                    public void openExternalStorage(File root, String data) {
-                        loadFile(root, data);
-                    }
-                }, Environment.getExternalStorageDirectory(), "");
-                break;
+        if (id == R.id.action_open_file) {
+            Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+            Uri uri = Uri.parse(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString());
+            intent.setDataAndType(uri, "*/*");
+            startActivityForResult(Intent.createChooser(intent, "Open folder"), SELECT_FILE);
+            return true;
+        } else if (id == R.id.action_show_statistics) {
+            showStatistics();
+            return true;
+        } else if (id == R.id.action_share) {
+            useShareFragment();
+        } else if (id == R.id.action_load_file) {
+            dialogDismiss();
+            makeDialog(R.layout.embroidery_thumbnail_view);
+            saveFileWrapper(new PermissionRequired() {
+                @Override
+                public void openExternalStorage(File root, String data) {
+                    loadFile(root, data);
+                }
+            }, Environment.getExternalStorageDirectory(), "");
         }
         return super.onOptionsItemSelected(item);
     }
