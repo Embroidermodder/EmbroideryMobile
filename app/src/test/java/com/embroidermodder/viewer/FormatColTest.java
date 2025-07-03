@@ -8,6 +8,9 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
+import com.embroidermodder.library.EmbPattern;
+import com.embroidermodder.library.EmbThread;
+
 public class FormatColTest {
 
     @Test

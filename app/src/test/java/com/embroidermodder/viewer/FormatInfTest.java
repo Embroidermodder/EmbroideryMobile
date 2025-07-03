@@ -8,6 +8,9 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
+import com.embroidermodder.library.EmbPattern;
+import com.embroidermodder.library.EmbThread;
+
 public class FormatInfTest {
     @Test
     public void formatInf_ReadCorrect() throws Exception {

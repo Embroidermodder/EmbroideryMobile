@@ -4,8 +4,8 @@ android {
     compileSdkVersion 35
 
     defaultConfig {
-        applicationId "com.embroidermodder.embroideryviewer"
-        namespace "com.embroidermodder.embroideryviewer"
+        applicationId "com.embroidermodder.viewer"
+        namespace "com.embroidermodder.viewer"
         minSdkVersion 16
         targetSdkVersion 35
         versionCode 4000

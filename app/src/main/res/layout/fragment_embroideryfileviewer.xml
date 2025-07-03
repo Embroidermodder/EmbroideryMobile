@@ -1,7 +1,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.embroidermodder.embroideryviewer.embroideryview.EmbroideryFileDirectoryFragment"
+    tools:context="com.embroidermodder.viewer.embroideryview.EmbroideryFileDirectoryFragment"
     android:id="@+id/export_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
