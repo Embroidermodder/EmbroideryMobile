@@ -222,5 +222,16 @@
         app:layout_constraintTop_toBottomOf="@+id/radioKsm"
         android:layout_marginLeft="8dp" />
 
+    <RadioButton
+        android:id="@+id/radioPng"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/format_png"
+        app:layout_constraintStart_toStartOf="@+id/radioCvs"
+        app:layout_constraintTop_toBottomOf="@+id/radioEmm"
+        android:layout_marginLeft="8dp" />
+
 
 </android.support.constraint.ConstraintLayout>
