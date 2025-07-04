@@ -20,8 +20,8 @@ Screenshots
 
 Planned features (no particular order)
 --------------------------------------
-- Kotlinify
-- Librariefy
-- Distributify
+- [x] Librariefy
+- [ ] Kotlinify
+- [ ] Distributify
 
 Happy embroidering!
