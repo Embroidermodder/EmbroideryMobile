@@ -18,7 +18,7 @@ import com.embroidermodder.library.StitchBlock;
 public class DrawView extends View implements EmbPattern.Listener, EmbPattern.Provider {
     private static final float MARGIN = 0.05f;
     private final EmbPattern embPattern = new EmbPattern();
-    private final EmbPatternViewer root = new EmbPatternViewer(embPattern);
+    private final EmbPatternViewer patternViewer = new EmbPatternViewer(embPattern);
     private final Paint _paint = new Paint();
     private int _height;
     private int _width;
@@ -107,10 +107,10 @@ public class DrawView extends View implements EmbPattern.Listener, EmbPattern.Pr
 
     @Override
     public void onDraw(Canvas canvas) {
-        if (root != null) {
+        if (patternViewer != null) {
             canvas.save();
             if (viewMatrix != null) canvas.concat(viewMatrix);
-            for (StitchBlock stitchBlock : root) {
+            for (StitchBlock stitchBlock : patternViewer.getStitches()) {
                 stitchBlock.draw(canvas, _paint);
             }
             canvas.restore();
@@ -118,16 +118,16 @@ public class DrawView extends View implements EmbPattern.Listener, EmbPattern.Pr
     }
 
     public String getStatistics() {
-        RectF bounds = root.calculateBoundingBox();
+        RectF bounds = patternViewer.calculateBoundingBox();
         StringBuilder sb = new StringBuilder();
-        int totalSize = root.getTotalSize();
-        int jumpCount = root.getJumpCount();
-        int colorCount = root.getColorCount();
+        int totalSize = patternViewer.getTotalSize();
+        int jumpCount = patternViewer.getJumpCount();
+        int colorCount = patternViewer.getColorCount();
         sb.append(getContext().getString(R.string.normal_stitches)).append(totalSize).append('\n');
         sb.append(getContext().getString(R.string.jumps)).append(jumpCount).append('\n');
         sb.append(getContext().getString(R.string.colors)).append(colorCount).append('\n');
-        sb.append(getContext().getString(R.string.size)).append(root.convert(bounds.width()))
-                .append(" mm X ").append(root.convert(bounds.height())).append(" mm\n");
+        sb.append(getContext().getString(R.string.size)).append(patternViewer.convert(bounds.width()))
+                .append(" mm X ").append(patternViewer.convert(bounds.height())).append(" mm\n");
         return sb.toString();
     }
 
@@ -139,16 +139,16 @@ public class DrawView extends View implements EmbPattern.Listener, EmbPattern.Pr
     public void setPattern(EmbPattern pattern) {
         if (pattern == null) return;
         this.embPattern.setPattern(pattern);
-        this.root.refresh();
+        this.patternViewer.refresh();
         pattern.notifyChange(EmbPattern.NOTIFY_CHANGE);
         invalidate();
     }
 
     @Override
     public void notifyChange(int id) {
-        this.root.refresh();
-        if (!root.isEmpty()) {
-            viewPort = root.calculateBoundingBox();
+        this.patternViewer.refresh();
+        if (!patternViewer.getStitches().isEmpty()) {
+            viewPort = patternViewer.calculateBoundingBox();
             float scale = Math.min(_height / viewPort.height(), _width / viewPort.width());
             float extraWidth = _width - (viewPort.width() * scale);
             float extraHeight = _height - (viewPort.height() * scale);

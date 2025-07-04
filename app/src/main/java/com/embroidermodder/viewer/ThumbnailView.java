@@ -29,7 +29,7 @@ public class ThumbnailView extends View {
     public static Drawable fileDefault, directoryDefault;
     public Thread thread;
     public File file;
-    EmbPatternViewer root;
+    EmbPatternViewer patternViewer;
     Bitmap cache;
 
     final Paint _paint = new Paint();
@@ -68,15 +68,15 @@ public class ThumbnailView extends View {
 
     public void createFromPattern(EmbPattern pattern) {
         if (pattern == null) return;
-        this.root = new EmbPatternViewer(pattern);
-        if (root.isEmpty()) {
+        this.patternViewer = new EmbPatternViewer(pattern);
+        if (patternViewer.getStitches().isEmpty()) {
             return;
         }
         float _width = getWidth();
         float _height = getHeight();
         if (_width == 0) _width = MIN_THUMBNAIL_SIZE;
         if (_height == 0) _height = MIN_THUMBNAIL_SIZE;
-        cache = root.getThumbnail(_width,_height);
+        cache = patternViewer.getThumbnail(_width, _height);
         processInvalidation();
     }
 
@@ -87,7 +87,7 @@ public class ThumbnailView extends View {
         } else {
             canvas.save();
             canvas.getClipBounds(rect);
-            canvas.translate(rect.left,rect.top);
+            canvas.translate(rect.left, rect.top);
             if (file == null || file.isDirectory()) {
                 canvas.drawColor(Color.BLUE);
                 directoryDefault.draw(canvas);
@@ -127,7 +127,7 @@ public class ThumbnailView extends View {
     }
 
     public void clear() {
-        this.root = null;
+        this.patternViewer = null;
         if (thread != null) {
             thread.interrupt();
         }

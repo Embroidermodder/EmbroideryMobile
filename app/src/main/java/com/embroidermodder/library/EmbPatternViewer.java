@@ -9,9 +9,11 @@ import android.graphics.RectF;
 import com.embroidermodder.library.geom.DataPoints;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class EmbPatternViewer extends ArrayList<StitchBlock> {
+public class EmbPatternViewer {
     EmbPattern pattern;
+    ArrayList<StitchBlock> stitches = new ArrayList<>();
 
     private static final float PIXELS_PER_MM = 10;
 
@@ -22,7 +24,7 @@ public class EmbPatternViewer extends ArrayList<StitchBlock> {
     }
 
     public void refresh() {
-        clear();
+        stitches.clear();
         int threadIndex = 0;
         DataPoints stitches = pattern.getStitches();
         int start;
@@ -48,7 +50,7 @@ public class EmbPatternViewer extends ArrayList<StitchBlock> {
                 int data = stitches.getData(i);
                 if (data != EmbPattern.STITCH) {
                     stop = i;
-                    add(new StitchBlock(stitches, start, stop, pattern.getThreadOrFiller(threadIndex), 0));
+                    this.stitches.add(new StitchBlock(stitches, start, stop, pattern.getThreadOrFiller(threadIndex), 0));
                     break;
                 }
             }
@@ -68,8 +70,8 @@ public class EmbPatternViewer extends ArrayList<StitchBlock> {
         Canvas canvas = new Canvas(bmp);
         Paint paint = new Paint();
         paint.setAntiAlias(true);
-        if (matrix != null) canvas.concat(matrix);
-        for (StitchBlock stitchBlock : this) {
+        canvas.concat(matrix);
+        for (StitchBlock stitchBlock : stitches) {
             stitchBlock.draw(canvas, paint);
         }
         return bmp;
@@ -78,6 +80,10 @@ public class EmbPatternViewer extends ArrayList<StitchBlock> {
     public RectF calculateBoundingBox() {
         DataPoints stitches = pattern.getStitches();
         return new RectF(stitches.getMinX(), stitches.getMinY(), stitches.getMaxX(), stitches.getMaxY());
+    }
+
+    public List<StitchBlock> getStitches() {
+        return stitches;
     }
 
     private float pixelstomm(float v) {
@@ -91,7 +97,7 @@ public class EmbPatternViewer extends ArrayList<StitchBlock> {
 
     public int getTotalSize() {
         int count = 0;
-        for (StitchBlock sb : this) {
+        for (StitchBlock sb : stitches) {
             count += sb.size();
         }
         return count;
@@ -99,7 +105,7 @@ public class EmbPatternViewer extends ArrayList<StitchBlock> {
 
     public float getTotalLength() {
         float count = 0;
-        for (StitchBlock sb : this) {
+        for (StitchBlock sb : stitches) {
             for (int i = 0, s = sb.size() - 1; i < s; i++) {
                 count += sb.distanceSegment(i);
             }
@@ -108,17 +114,17 @@ public class EmbPatternViewer extends ArrayList<StitchBlock> {
     }
 
     public int getJumpCount() {
-        return size();
+        return stitches.size();
     }
 
     public int getColorCount() {
-        return size();
+        return stitches.size();
     }
 
     public float getMaxStitch() {
         float count = Float.NEGATIVE_INFINITY;
         float current;
-        for (StitchBlock sb : this) {
+        for (StitchBlock sb : stitches) {
             for (int i = 0, s = sb.size() - 1; i < s; i++) {
                 current = sb.distanceSegment(i);
                 if (current > count) {
@@ -132,7 +138,7 @@ public class EmbPatternViewer extends ArrayList<StitchBlock> {
     public float getMinStitch() {
         float count = Float.POSITIVE_INFINITY;
         float current;
-        for (StitchBlock sb : this) {
+        for (StitchBlock sb : stitches) {
             for (int i = 0, s = sb.size() - 1; i < s; i++) {
                 current = sb.distanceSegment(i);
                 if (current < count) {
@@ -146,7 +152,7 @@ public class EmbPatternViewer extends ArrayList<StitchBlock> {
     public int getCountRange(float min, float max) {
         int count = 0;
         float current;
-        for (StitchBlock sb : this) {
+        for (StitchBlock sb : stitches) {
             for (int i = 0, s = sb.size() - 1; i < s; i++) {
                 current = sb.distanceSegment(i);
                 if ((current >= min) && (current <= max)) {
@@ -156,5 +162,4 @@ public class EmbPatternViewer extends ArrayList<StitchBlock> {
         }
         return count;
     }
-
 }
