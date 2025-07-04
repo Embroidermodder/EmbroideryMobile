@@ -1,6 +1,6 @@
 package com.embroidermodder.library;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.embroidermodder.library.geom.DataPoints;
 import com.embroidermodder.library.geom.Points;

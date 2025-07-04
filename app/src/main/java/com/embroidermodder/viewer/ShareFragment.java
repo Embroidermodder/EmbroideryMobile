@@ -9,8 +9,6 @@ import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v4.app.Fragment;
-import android.support.v4.content.FileProvider;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +19,9 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.TextView;
+
+import androidx.core.content.FileProvider;
+import androidx.fragment.app.Fragment;
 
 import com.embroidermodder.library.EmbPattern;
 import com.embroidermodder.library.Format;
