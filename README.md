@@ -1,3 +1,6 @@
+[![](https://jitpack.io/v/gdg-berlin-android/embroidery-mobile.svg)](https://jitpack.io/#gdg-berlin-android/embroidery-mobile)
+
+
 # Mobile Embroidery Viewer
 
 View and tweak machine embroidery files on your Android device.
