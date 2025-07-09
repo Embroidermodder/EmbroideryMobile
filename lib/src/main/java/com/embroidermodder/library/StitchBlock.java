@@ -33,6 +33,7 @@ public class StitchBlock extends PointsIndex<DataPoints> {
 
     public void draw(Canvas canvas, Paint paint) {
         if (_thread == null) return;
+        paint.setStrokeCap(Paint.Cap.ROUND);
         paint.setColor(_thread.getColor());
 
         int count = (getIndex_stop() - getIndex_start()) << 1;
