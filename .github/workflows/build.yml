@@ -1,0 +1,38 @@
+name: Build
+
+# Note that we don't allow reuseable workflows as a security measure.
+# This mainly is a setup to call bin/build.sh.
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    env:
+      HOST_SYSTEM: 'Ubuntu'
+      CMAKE_GENERATOR: 'Ninja'
+    steps:
+      - name: Build
+        run: |
+          git clone https://github.com/embroidermodder/EmbroideryMobile
+          cd EmbroideryMobile
+          bash bin/build.sh "Android"
+
+  build-macos:
+    runs-on: macos-latest
+    env:
+      HOST_SYSTEM: 'MacOS'
+      CMAKE_GENERATOR: 'Ninja'
+    steps:
+      - name: Build
+        run: |
+          git clone https://github.com/embroidermodder/EmbroideryMobile
+          cd EmbroideryMobile
+          bash bin/build.sh "iOS"
