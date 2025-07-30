@@ -1,16 +1,30 @@
+[![](https://jitpack.io/v/gdg-berlin-android/embroidery-mobile.svg)](https://jitpack.io/#gdg-berlin-android/embroidery-mobile)
+
+
 # Mobile Embroidery Viewer
-View and tweak machine embroidery files on your Android device
+
+View and tweak machine embroidery files on your Android device.
+
+Original source by https://github.com/Embroidermodder/EmbroideryMobile
+
 
 Current features
 ----------------
- Ability to view .DST,.EXP, .JEF, .PCS, .PEC, .PES, .SEW, and .XXX designs.
+
+Ability to view .DST,.EXP, .JEF, .PCS, .PEC, .PES, .SEW, and .XXX designs.
+
  
-Enhancements (no particular order)
--------------------------------------------------
-- Thumbnail directory viewer (generate and cache thumbnail view)
-- Potentially use "Android Instant Apps" (when available)
-- Add ability to change thread colors for visualizing end result
-- More realistic embroidery view
-- Save any changes to DST format
-- Add other embroidery formats as needed/requested
-- Ability to share files, or screenshots of designs
+Screenshots
+-----------
+
+<img src="docs/embroidery-detail.png" width="100"/> <br/>
+<img src="docs/happy-penguin-embroidery.png" width="100"/><br/>
+
+
+Planned features (no particular order)
+--------------------------------------
+- [x] Librariefy
+- [ ] Kotlinify
+- [ ] Distributify
+
+Happy embroidering!

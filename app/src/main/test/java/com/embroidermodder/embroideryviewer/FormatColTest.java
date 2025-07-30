@@ -1,4 +1,4 @@
-package com.embroidermodder.embroideryviewer;
+package com.embroidermodder.viewer;
 
 import org.junit.Test;
 

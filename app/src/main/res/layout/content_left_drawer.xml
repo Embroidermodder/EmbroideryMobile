@@ -2,13 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerContent"
     android:layout_width="270dp"
     android:layout_height="match_parent"
     android:layout_gravity="start"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.embroidermodder.embroideryviewer.MainActivity"
-    tools:showIn="@layout/activity_main"
     android:background="@color/semitransparentwhite"
-    android:id="@+id/drawerContent">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.embroidermodder.viewer.MainActivity"
+    tools:showIn="@layout/activity_main">
 
 </RelativeLayout>

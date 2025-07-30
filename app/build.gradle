@@ -1,29 +1,29 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 35
 
     defaultConfig {
-        applicationId "com.embroidermodder.embroideryviewer"
-        minSdkVersion 16
-        targetSdkVersion 31
+        applicationId "com.embroidermodder.viewer"
+        namespace "com.embroidermodder.viewer"
+        minSdkVersion 31
+        targetSdkVersion 35
         versionCode 4000
         versionName "1.0"
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
     }
 }
 
 dependencies {
-    implementation 'com.android.support:support-v4:25.4.0'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    testImplementation 'junit:junit:4.12'
-    implementation 'com.android.support:appcompat-v7:25.4.0'
-    implementation 'com.android.support:design:25.4.0'
+    implementation project(':lib')
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
+    implementation 'com.google.android.material:material:1.12.0'
     implementation 'com.github.yukuku:ambilwarna:2.0.1'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
 }

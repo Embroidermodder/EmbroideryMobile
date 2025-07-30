@@ -2,17 +2,17 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainContentArea"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.embroidermodder.embroideryviewer.MainActivity"
-    tools:showIn="@layout/activity_main"
-    android:id="@+id/mainContentArea"
-    android:orientation="vertical">
+    tools:context="com.embroidermodder.viewer.MainActivity"
+    tools:showIn="@layout/activity_main">
 
-    <com.embroidermodder.embroideryviewer.DrawView
+    <com.embroidermodder.viewer.DrawView
+        android:id="@+id/drawview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/drawAreaColor"
-        android:id="@+id/drawview"/>
+        android:background="@color/drawAreaColor" />
 </RelativeLayout>
